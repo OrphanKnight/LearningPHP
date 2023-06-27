@@ -28,6 +28,7 @@
     font-family: "Hind", sans-serif;
   }
 </style>
+
 <h1>Experiences &amp; Personal Projects</h1>
 <h3>MDC AI Research Intern Jun 2019 &#8211; Aug 2019</h3>
 <ul>
