@@ -49,6 +49,12 @@
       </div>
     </header>
 
+    <!-- Session Start-->
+    <?php 
+      session_start();
+    ?>
+
+
     <main container class="siteContent">
       <!-- BEGIN CHANGEABLE CONTENT. -->
       <!-- Script 8.2 - header.html -->

@@ -4,7 +4,7 @@ the site (in theory). */
 
  // Set the page title and include the header file:
  define('TITLE', 'Register');
- include(dirname(__DIR__) . "/LabAssignment3/templates/header.php");
+ include(dirname(__DIR__) . "/ProjectAssignment2/templates/header.php");
 
  print '<div class="container">';
  
@@ -47,6 +47,14 @@ p>';
 
     if (!$problem) { // If there weren't any problems...
 
+      //Test registration in session
+      $_SESSION['registered_users'][] = [
+        'first_name' => $_POST['first_name'],
+        'last_name' => $_POST['last_name'],
+        'email' => $_POST['email'],
+        'password' => $_POST['password1'], 
+      ];
+    
       // Print a message:
       print '<p class="text--success">You are now registered!<br>Okay, you are not
       really registered but...</p>';
@@ -130,5 +138,5 @@ p>';
 
 <?php
 print '</div>';
-include dirname(__DIR__) . "/LabAssignment3/templates/footer.php"; 
+include dirname(__DIR__) . "/ProjectAssignment2/templates/footer.php"; 
 ?>

@@ -1,10 +1,7 @@
-<?php // Script 8.8 - login.php
- /* This page lets people log into the
-site (in theory). */
-
+<?php 
  // Set the page title and include the
  define('TITLE', 'Login');
- include(dirname(__DIR__) . "/LabAssignment3/templates/header.php"); 
+ include(dirname(__DIR__) . "/ProjectAssignment2/templates/header.php"); 
 
 print '<div class="container">';
 
@@ -20,15 +17,26 @@ this, that, and the other thing.
 
     // Handle the form:
     if ( (!empty($_POST['email'])) && (!empty($_POST['password'])) ) {
-
-        if ( (strtolower($_POST['email']) == 'me@example.com') 
-        && ($_POST['password'] == 'testpass') ) 
+      if (isset($_SESSION['registered_users'])) {
+        foreach ($_SESSION['registered_users'] as $user) {
+          if ($_POST['email'] == $user['email'] && $_POST['password'] == $user['password']) 
         { // Correct!
 
-            print '<p class="text--success">You are logged
-            in!<br>Now you can blah,
-            blah, blah...</p>';
+            //session code
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['loggedin'] = time();
 
+            print '<p class="text--success">'.  $_SESSION['email'] .' is logged
+            in!</p>';
+
+            date_default_timezone_set('America/New_York');
+
+            print '<p class="text--success"> You have logged in at '.  date("g:i a", $_SESSION['loggedin']) .'!</p>';
+            print '<p><a href="logout.php">Logout</a></p>';
+            print '<p><a href="test.php">test</a></p>';
+            break;
+          }
+        }
         } else { // Incorrect!
 
         print '<p class="text--error">The submitted email
@@ -67,5 +75,5 @@ this, that, and the other thing.
 
 
 <?php } print '</div>'; 
-include(dirname(__DIR__) ."/LabAssignment3/templates/footer.php"); 
+include(dirname(__DIR__) ."/ProjectAssignment2/templates/footer.php"); 
 ?>
