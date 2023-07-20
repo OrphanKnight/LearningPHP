@@ -18,8 +18,6 @@ $result = mysqli_query($dbc, $sql);
 
 $users = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-print_r($users[0]);
-
  // Check if the form has been submitted:
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Handle the form:
@@ -31,7 +29,9 @@ print_r($users[0]);
             if((strtolower($_POST['email']) == $user['email']) && ($_POST['password'] == $user['password'])){
               // Indicate they are logged in:
               $loggedIn = true;
-              print '<p class="text--success"> '. $user['email'] .', You have logged in!</p>';
+              print '<p class="text--success"> '. $user['email'] .', You have logged in!</p>';// Redirect to the home page
+              header('Location: home.php');
+              exit;
               break; // exit the loop if a match is found
             }
           }
